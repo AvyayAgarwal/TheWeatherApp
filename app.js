@@ -15,18 +15,29 @@ const argv = yargs
   .help()
   .alias('help', 'h')
   .argv;
-
+  
 geocode.geocodeAddress(argv.address, (addressError, addressResults) => {
+  console.log(); //To provide initial spacing int he command line regardless of the output
   if (addressError) {
     console.log(`Address Error: ${addressError}`);
   } else {
-    console.log(JSON.stringify(addressResults, undefined, 2));
-
     weather.weatherInfo(addressResults, (weatherError, weatherResults) => {
       if(weatherError) {
         console.log(`Weather Error: ${weatherError}`);
       } else {
-        console.log(JSON.stringify(weatherResults, undefined, 2));
+        console.log(`The weather in ${addressResults.address} is currently ${weatherResults.weather}`);
+
+        if(weatherResults.temperature !== weatherResults.realFeel) {
+          console.log(`It is ${weatherResults.temperature}° but it feels like ${weatherResults.realFeel}°`);
+        } else {
+          console.log(`The temperature is ${weatherResults.temperature}°`);
+        }
+
+        if(weatherResults.precipitation !== undefined) { //If there is a chance of some type of precipitation
+          console.log(`There is a ${Math.round(weatherResults.probability*100)}% chance of ${weatherResults.precipitation} and humidity is at ${Math.round(weatherResults.humidity*100)}% \n`);
+        } else { //If there is not precipitation forcasted
+          console.log(`There is a ${Math.round(weatherResults.probability*100)}% chance of precipitation and humidity is at ${Math.round(weatherResults.humidity*100)}% \n`);
+        }
       }
     });
   }
