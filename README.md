@@ -6,7 +6,7 @@ It uses Google Maps API and Dark Sky API to get location and weather information
 
 ## How to use:
 
-Make sure you have node and npm install. You can run the following commands to check which versions you have of each:
+Make sure you have node and npm installed. You can run the following commands to check which versions you have of each:
 ```
 npm -v
 node -v
