@@ -1,5 +1,9 @@
 # TheWeatherApp
 
+A Node.js application that gives the current weather forecast of an inputted location.
+
+It uses Google Maps API and Dark Sky API to get location and weather information respectively. Key features incldude temperature automatically being shown in Celsius or Fahrenheit depending on the location inputted.
+
 ## How to use:
 
 Make sure you have node and npm install. You can run the following commands to check which versions you have of each:
