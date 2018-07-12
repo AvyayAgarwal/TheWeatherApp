@@ -2,7 +2,9 @@
 
 A Node.js application that gives the current weather forecast of an inputted location.
 
-It uses Google Maps API and Dark Sky API to get location and weather information respectively. Key features incldude temperature automatically being shown in Celsius or Fahrenheit depending on the location inputted.
+It uses Google Maps API and Dark Sky API to get location and weather information respectively.
+
+Key features include temperature automatically being shown in Celsius or Fahrenheit depending on the units followed at that location. The application will also show national weather warnings if any have been issued.
 
 ## How to use:
 
