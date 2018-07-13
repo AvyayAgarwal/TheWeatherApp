@@ -41,7 +41,9 @@ geocode.geocodeAddress(argv.address, (addressError, addressResults) => {
         }
 
         if(weatherResults.alert !== undefined) {
-          console.log(`There is a ${weatherResults.alert.title}.\n`);
+          if(weatherResults.alert.title!== undefined) {
+            console.log(`There is a ${weatherResults.alert.title}.\n`);
+          }
         }
       }
     });
