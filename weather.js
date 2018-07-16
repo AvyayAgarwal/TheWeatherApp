@@ -4,6 +4,7 @@ const request = require('request');
 var weatherInfo = (addressResults, callback) => {
   
     request({
+      //API Key has been reset ... generate and add your own Dark Sky API Key
         url: `https://api.darksky.net/forecast/2e283728b24813c92ccb34938ff0ed11/${addressResults.latitude},${addressResults.longitude}?units=auto`,
         json: true
       }, (error, response, body) => {
