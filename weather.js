@@ -5,7 +5,7 @@ var weatherInfo = (addressResults, callback) => {
   
     request({
       //API Key has been reset ... generate and add your own Dark Sky API Key
-        url: `https://api.darksky.net/forecast/2e283728b24813c92ccb34938ff0ed11/${addressResults.latitude},${addressResults.longitude}?units=auto`,
+        url: `https://api.darksky.net/forecast/<Dark Sky API Key>/${addressResults.latitude},${addressResults.longitude}?units=auto`,
         json: true
       }, (error, response, body) => {
         if(response.statusCode === 200 && !error) {

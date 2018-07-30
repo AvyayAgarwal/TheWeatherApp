@@ -1,0 +1,19 @@
+<body>
+    <h1>The Weather App</h1>
+    <form name="location" method="POST" action"/weather/show">
+        <table>
+            <tr>
+                <td>Address: </td>
+                <td><input type="text" name"address"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value"Submit"></td>
+            </tr>
+        </table>
+    </form>
+
+    <% if(weather != null) { %>
+        <div>Weather:</div>
+        <div><% weather %></div>
+    <% } %>
+</body>
