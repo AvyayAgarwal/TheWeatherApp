@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<head>
+    <title>Testing EJS</title>
+</head>
+<body>
+    <h1>The Weather App</h1>
+    <form name="location" method="POST" action="http://localhost:3000/show">
+        <table>
+            <tr>
+                <td>Address: </td>
+                <td><input type="text" name="address"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="Submit"></td>
+            </tr>
+        </table>
+    </form>
+    <br>
+    <% if(weatherPrint != undefined) { %>
+        <div>Weather:<br>
+            <%= weatherPrint %>
+        </div>
+    <% } %>
+</body>

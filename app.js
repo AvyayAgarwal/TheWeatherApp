@@ -1,11 +1,18 @@
 const yargs = require('yargs');
-var express = require('express');
+const express = require('express');
+const bodyParser = require('body-parser');
+
 const geocode = require('./geocode');
 const weather = require('./weather');
 
 var app = express();
 
-app.set('view-engine', 'ejs');
+app.set('view engine', 'ejs');
+
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(bodyParser.json());
 
 const argv = yargs
   .options({
@@ -66,7 +73,13 @@ var result = `\nTesting\n`;
 
 app.get('/', (req, res) => {
   res.render('index', {
-    weather: result
+    weatherPrint: 'Testing',
+  });
+});
+
+app.post('/show', (req,res) => {
+  res.render('index', {
+    weatherPrint: req.body.address
   });
 });
 
