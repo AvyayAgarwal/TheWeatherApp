@@ -12,7 +12,6 @@ var geocodeAddress = async (address, callback) => {
     } else if (body.status === 'ZERO_RESULTS') {
       callback('Unable to find that address.');
     } else if (body.status === 'OK') {
-      // console.log(body.results, "nii");
       callback(undefined, {
         address: body.results[0].formatted_address,
         latitude: body.results[0].geometry.location.lat,
