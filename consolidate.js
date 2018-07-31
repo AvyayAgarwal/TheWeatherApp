@@ -10,7 +10,7 @@ var fetchResults = (address, callback) => {
     } else {
         weather.weatherInfo(addressResults, (weatherError, weatherResults) => {
             // console.log('Entered weatherinfo');
-            var result = '\nResult:\n';
+            var result = '\n';
             if(weatherError) {
                 // console.log(`Weather Error: ${weatherError}`);
                 result = result + `Weather Error: ${weatherError}\n`;

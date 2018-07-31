@@ -18,7 +18,7 @@ app.use(bodyParser.json());
     });
   });
 
-app.post('/show', async (req,res) => {
+app.post('/', async (req,res) => {
   consolidate.fetchResults(req.body.address, (results) => {
     // console.log("Results log in fetchresults in app.post: ", results);
     res.render('index', {
