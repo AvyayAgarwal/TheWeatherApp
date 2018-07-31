@@ -1,9 +1,9 @@
 const request = require('request');
 
-var geocodeAddress = (address, callback) => {
+var geocodeAddress = async (address, callback) => {
   var encodedAddress = encodeURIComponent(address);
 
-  request({
+  await request({
     url: `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}`,
     json: true
   }, (error, response, body) => {
