@@ -1,24 +1,58 @@
 <!DOCTYPE html>
-<head>
-    <title>Testing EJS</title>
-</head>
-<body>
-    <h1>The Weather App</h1>
-    <form name="location" method="POST" action="">
-        <table>
-            <tr>
-                <td>Address: </td>
-                <td><input type="text" name="address"></td>
-            </tr>
-            <tr>
-                <td colspan="2"><input type="submit" value="Submit"></td>
-            </tr>
-        </table>
-    </form>
-    <br>
-    
-        <div>Weather:<br>
-            <%= weatherPrint %>
+<html>
+    <head>
+        <title>The Weather App</title>
+        
+        <style>
+            input[type=text], select {
+                width: 50%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: block;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+            
+            input[type=submit] {
+                width: 50%;
+                background-color: rgb(36, 199, 145);
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+            
+            input[type=submit]:hover {
+                background-color: rgb(31, 165, 120);
+            }
+            
+            div {
+                width: 50%;
+                border-radius: 5px;
+                background-color: #f2f2f2;
+                padding: 20px;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div>
+            <h1>The Weather App</h1>
+            <form name="location" method="POST" action="">
+                <label for="location"><h3>Location:</h3></label>
+                <input type="text" id="location" placeholder="Enter Name/Address/Pincode" name="address">
+                <input type="submit" value="Submit">
+            </form>
         </div>
-   
-</body>
+        <br>
+        
+            <div>
+                <h3>Weather:</h3>
+                <%= weatherPrint %>
+            </div>
+    
+    </body>
+</html>
