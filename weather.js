@@ -4,9 +4,9 @@ const request = require('request');
 var weatherInfo = async (addressResults, callback) => {
   
     await request({
-      //API Key has been reset ... generate and add your own Dark Sky API Key
-        url: `https://api.darksky.net/forecast/d7401dba04ddcfb28e625a5486dfb18b/${addressResults.latitude},${addressResults.longitude}?units=auto`,
-        json: true
+      //API Key has been reset and declared as an environment variable
+      url: `https://api.darksky.net/forecast/${process.env.DARKSKY_API_KEY}/${addressResults.latitude},${addressResults.longitude}?units=auto`,
+      json: true
       }, (error, response, body) => {
         if(response.statusCode === 200 && !error) {
           callback(undefined, {
