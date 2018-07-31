@@ -3,46 +3,36 @@ const weather = require('./weather');
 
 var fetchResults = (address, callback) => {
     geocode.geocodeAddress(address, (addressError, addressResults) => {
-    console.log(); //To provide initial spacing int he command line regardless of the output
     if (addressError) {
-        // console.log(`Address Error: ${addressError}`);
-        callback(`Address Error: ${addressError}\n`);
+        callback(`Address Error: ${addressError}<br>`);
     } else {
         weather.weatherInfo(addressResults, (weatherError, weatherResults) => {
-            // console.log('Entered weatherinfo');
-            var result = '\n';
+            var result = '';
             if(weatherError) {
-                // console.log(`Weather Error: ${weatherError}`);
-                result = result + `Weather Error: ${weatherError}\n`;
-            } else {
-                // console.log(`The weather in ${addressResults.address} is currently ${weatherResults.weather}.`);
-                // console.log(weatherResults.dayForecast);
-                result = result + `The weather in ${addressResults.address} is currently ${weatherResults.weather}. \n${weatherResults.dayForecast} \n`;
+                result = result + `Weather Error: ${weatherError}<br>`;
+            } else {                
+                result = result + `The weather in ${addressResults.address} is currently ${weatherResults.weather}.<br>`;
 
                 if(weatherResults.temperature !== weatherResults.realFeel) {
-                    // console.log(`It is ${weatherResults.temperature}° but it feels like ${weatherResults.realFeel}°.`);
-                    result = result + `It is ${weatherResults.temperature}° but it feels like ${weatherResults.realFeel}°.\n`;
+                    result = result + `It is ${weatherResults.temperature}° but it feels like ${weatherResults.realFeel}°.<br>`;
                 } else {
-                    // console.log(`The present temperature is ${weatherResults.temperature}°.`);
-                    result = result + `The present temperature is ${weatherResults.temperature}°.\n`;
+                    result = result + `The present temperature is ${weatherResults.temperature}°.<br>`;
                 }
 
+                result = result + '<br>' + `${weatherResults.dayForecast}<br>`;
+
                 if(weatherResults.precipitation !== undefined) { //If there is a chance of some type of precipitation
-                    // console.log(`There is a ${Math.round(weatherResults.probability*100)}% chance of ${weatherResults.precipitation} and humidity is at ${Math.round(weatherResults.humidity*100)}%.\n`);
-                    result = result + `There is a ${Math.round(weatherResults.probability*100)}% chance of ${weatherResults.precipitation} and humidity is at ${Math.round(weatherResults.humidity*100)}%.\n`;
+                    result = result + `There is a ${Math.round(weatherResults.probability*100)}% chance of ${weatherResults.precipitation} and humidity is at ${Math.round(weatherResults.humidity*100)}%.<br>`;
                 } else { //If there is not precipitation
-                    // console.log(`There is a ${Math.round(weatherResults.probability*100)}% chance of precipitation and humidity is at ${Math.round(weatherResults.humidity*100)}%.\n`);
-                    result = result + `There is a ${Math.round(weatherResults.probability*100)}% chance of precipitation and humidity is at ${Math.round(weatherResults.humidity*100)}%.\n`;
+                    result = result + `There is a ${Math.round(weatherResults.probability*100)}% chance of precipitation and humidity is at ${Math.round(weatherResults.humidity*100)}%.<br>`;
                 }
 
                 if(weatherResults.alert !== undefined) {
                     if(weatherResults.alert.title!== undefined) {
-                        // console.log(`There is a ${weatherResults.alert.title}.\n`);
-                        result = result + `There is a ${weatherResults.alert.title}.\n`;
+                        result = result + `There is a ${weatherResults.alert.title}.<br>`;
                     }
                 }
             }
-            // console.log("result from a.js before callback: ". result);
             callback(result);
         });
     }
