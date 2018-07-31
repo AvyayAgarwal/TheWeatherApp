@@ -27,6 +27,8 @@ app.post('/show', async (req,res) => {
   });
 });
 
-app.listen(3000, () => {
-  console.log("\nServer is up on port 3000\n");
+var PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`Server is up on port ${PORT}`);
 });
